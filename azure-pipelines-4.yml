@@ -9,8 +9,9 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
 - hosts: localhost
+steps:
+
   tasks:
 
     - name: Print all available facts
