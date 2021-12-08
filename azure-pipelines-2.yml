@@ -15,9 +15,9 @@ strategy:
       python.version: '3.7'
 
 steps:
-- script: |
-    inputs:
+- task: PythonScript@0
+  inputs:
     scriptSource: 'inline'
     script: |
-      print( "Hello world 1" )
-      print( "Hello world 2" )
+      print('Hello world 1')
+      print('Hello world 2')
