@@ -13,6 +13,6 @@ steps:
 - script: pip install ansible 
   displayName: 'Instalando Ansible'
 
-- script: ansible  playbook.yml
-
+- script: ansible-playbook playbook.yml
+  displayName: 'Playbook Ansible'
 
