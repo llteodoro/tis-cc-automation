@@ -1,0 +1,5 @@
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    -name : Run command 
+     command : cmd start time
