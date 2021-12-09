@@ -1,5 +1,5 @@
 - hosts: localhost
   gather_facts: false
   tasks:
-    -name : Run command 
-     command : echo "Hello World"
+    - name: Run command 
+     command: echo "Hello World"
