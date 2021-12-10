@@ -18,6 +18,6 @@ steps:
 - script: pipenv install ansible 
   displayName: 'Instalando Ansible'
 
-- script: pipenv shell ansible-playbook playbook-explore.yml
+- script: ansible-playbook playbook-explore.yml
   displayName: 'Playbook Ansible'
 
