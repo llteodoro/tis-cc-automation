@@ -11,8 +11,11 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: pip install pipenv --user && pipenv shell 
+- script: pip install pipenv --user
   displayName: 'Subindo ambiente Python Virtual'
+
+- script: pipenv shell
+  displayName: 'Entrando no Virtual Env'
 
 - script: pip install ansible 
   displayName: 'Instalando Ansible'
