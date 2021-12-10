@@ -1,0 +1,22 @@
+#Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+
+trigger:
+- the-first-pipeline
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: pip install pipenv --user && pipenv shell 
+  displayName: 'Subindo ambiente Python Virtual'
+
+- script: pip install ansible 
+  displayName: 'Instalando Ansible'
+
+- script: ansible-playbook playbook-explore.yml
+  displayName: 'Playbook Ansible'
+
