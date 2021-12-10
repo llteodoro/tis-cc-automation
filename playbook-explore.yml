@@ -1,0 +1,8 @@
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Run command 
+      command: echo "Hello World"
+      register: out
+
+    - debug: var=out.stdout_lines
