@@ -1,10 +1,12 @@
 ## colete as informações de IP, OS Family, Distribuição e quantidade de memória do VSTS agent
 - hosts: localhost
-  gather_facts: false
+  gather_facts: true
   tasks:
-- debug:
-    msg:
-    - "Ip do host : {{ ansible_all_ipv4_addresses }}"
-    - "Os Family : {{ ansible_os_family }}"
-    - "Distribuição : {{ ansible_distribution }}"
-    - "Quantidade de Memória : {{ ansible_memory_mb }}"
+    - debug:
+        var: ansible_facts["all_ipv4_addresses"]
+    - debug:
+        var: ansible_facts["os_family"]
+    - debug:
+        var: ansible_facts["distribution"]
+    - debug:
+        var: ansible_facts["memory_mb"]
