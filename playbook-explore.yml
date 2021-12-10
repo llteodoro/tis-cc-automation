@@ -10,3 +10,9 @@
         var: ansible_facts["distribution"]
     - debug:
         var: ansible_facts["memory_mb"]
+    
+    - name: Add a line to a file if the file does not exist, without passing regexp
+      ansible.builtin.lineinfile:
+        path: /tmp/testfile
+        line: Teste !
+        create: yes
