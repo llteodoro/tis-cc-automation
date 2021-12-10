@@ -14,12 +14,10 @@ steps:
 - script: pip install pipenv --user
   displayName: 'Subindo ambiente Python Virtual'
 
-- script: pipenv shell
-  displayName: 'Entrando no Virtual Env'
 
-- script: pip install ansible 
+- script: pipenv install ansible 
   displayName: 'Instalando Ansible'
 
-- script: ansible-playbook playbook-explore.yml
+- script: pipenv ansible-playbook playbook-explore.yml
   displayName: 'Playbook Ansible'
 
