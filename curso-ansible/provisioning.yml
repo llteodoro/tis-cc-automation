@@ -1,46 +1,87 @@
 ---
-- hosts : all
+- hosts: all
+  handlers:
+    - name: restart apache
+      service:
+        name: apache2
+        state: restarted
+      become: yes
   tasks:
-    - name : 'Instala pacotes de dependencia do sistema operacional'
+    - name: "Instala pacotes de dependencia do sistema operacional"
       apt:
-        name: "{{ item }}"
+        name: 
+          - php5
+          - apache2
+          - libapache2-mod-php5
+          - php5-gd
+          - libssh2-php
+          - php5-mcrypt
+          - mysql-server-5.6
+          - python-mysqldb
+          - php5-mysql
         state: latest
       become: yes
-      with_items:
-      - php5
-      - apache2
-      - libapache2-mod-php5
-      - php5-gd
-      - libssh2-php
-      - php5-mcrypt
-      - mysql-server-5.6
-      - python-mysqldb
-      - php5-mysql
-    - name : 'Criação do banco MySQL'
-      mysql_db :
+
+    - name: "Criação do banco MySQL"
+      mysql_db:
         name: wordpress_db
         login_user: root
         state: present
-    
-    - name : 'Criação de usuário no BD'
+
+    - name: "Criação de usuário no BD"
       mysql_user:
         login_user: root
         name: wordpress_user
         password: 12345
-        priv: 'wordpress_db.*:ALL'
+        priv: "wordpress_db.*:ALL"
         state: present
-    #- name : 'Instala o PHP 5 '
-    #  apt: 
-    #    name: php5
-    #    state: latest
-    #  become: yes
+
+    - name: Baixa o arquivo do Wordpress
+      get_url:
+        url: https://wordpress.org/wordpress-5.0.tar.gz
+        dest: /tmp/latest.tar.gz
+
+    - name: "Descompacta o wordpress"
+      unarchive:
+        src: "/tmp/latest.tar.gz"
+        dest: /var/www
+        remote_src: yes
+      become: yes
+
+    - name: Copy a WP-Config
+      copy:
+        src: /var/www/wordpress/wp-config-sample.php
+        dest: /var/www/wordpress/wp-config.php
+        remote_src: yes
+      become: yes
+
+    - name: Configura o arquivo WP-Config
+      replace:
+        path: "/var/www/wordpress/wp-config.php"
+        regexp: "{{ item.regex }}"
+        replace: "{{ item.value }}"
+      with_items:
+        - { regex: "database_name_here", value: "wordpress_db" }
+        - { regex: "username_here", value: "wordpress_user" }
+        - { regex: "password_here", value: "12345" }
+      become: yes
+    - name: Configura o Apache para servir o Wordpress
+      copy:
+        src: 'files/000-default.conf'
+        dest: '/etc/apache2/sites-available/000-default.conf'
+        remote_src: no
+      become: yes 
+      notify:
+        - restart apache   
+
+   
     #- name : 'Instala o Apache2'
-    #  apt : 
+    #  apt :
     #    name: apache2
     #    state: latest
-    #  become: yes 
+    #  become: yes
     #- name : 'Instala o Modphp'
     #  apt:
     #    name: libapache2-mod-php5
     #    state: latest
-    #  become: yes     
+    #  become: yes
