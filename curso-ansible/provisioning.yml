@@ -16,7 +16,19 @@
       - mysql-server-5.6
       - python-mysqldb
       - php5-mysql
-
+    - name : 'Criação do banco MySQL'
+      mysql_db :
+        name: wordpress_db
+        login_user: root
+        state: present
+    
+    - name : 'Criação de usuário no BD'
+      mysql_user:
+        login_user: root
+        name: wordpress_user
+        password: 12345
+        priv: 'wordpress_db.*:ALL'
+        state: present
     #- name : 'Instala o PHP 5 '
     #  apt: 
     #    name: php5
