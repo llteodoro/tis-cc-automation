@@ -11,8 +11,9 @@
     - debug:
         var: ansible_facts["memory_mb"]
     
-    - name: Add a line to a file if the file does not exist, without passing regexp
+    - name: Crie um playbook Ansible que crie um arquivo no /tmp com o seguinte conteúdo
       ansible.builtin.lineinfile:
         path: /tmp/testfile
-        line: Teste !
+        line: Esse é um arquivo que foi criado pelo Ansible!
         create: yes
+
