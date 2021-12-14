@@ -4,48 +4,46 @@
 # https://aka.ms/yaml
 
 
-#trigger:
-#- the-first-pipeline
-#
-#pool:
-#  vmImage: ubuntu-latest
-#
-#steps:
-#- script: echo $PS1
-
-#- script: | 
-#          echo $PS1
-#          pip install pipenv --user
-#          pipenv shell
-#          pipenv install ansible 
-#          ansible-playbook playbook-explore.yml
-#          echo $PS1
-#  displayName: 'Subindo ambiente Python Virtual'
-
-#- script: pipenv shell
-#  displayName: 'Tentando entrar no Venv'
-#
-#- script: pipenv install ansible 
-#  displayName: 'Instalando Ansible'
-#
-#- script: ansible-playbook playbook-explore.yml
-#  displayName: 'Playbook Ansible'
-#
-#- script: echo $PS1
-
 trigger:
 - the-first-pipeline
+
 pool:
-
   vmImage: ubuntu-latest
+
 steps:
+- script: echo $PS1
 
-- script: |
-     python -m venv xpto
-     source xpto/bin/activate
-     python -m pip install --upgrade pip
-     pip install ansible
-     ansible-playbook playbook-explore.yml
-     echo $PS1
+- script: | 
+          echo $PS1
+          pip install pipenv --user
+          pipenv shell
+          pipenv install ansible 
+          ansible-playbook playbook-explore.yml
+          pipenv run echo $PS1
+  displayName: 'Subindo ambiente Python Virtual'
+- script: pipenv shell
+  displayName: 'Tentando entrar no Venv'
 
-  displayName: "Install requirements"
+- script: pipenv install ansible 
+  displayName: 'Instalando Ansible'
+
+- script: ansible-playbook playbook-explore.yml
+  displayName: 'Playbook Ansible'
+
+
+#trigger:
+#- the-first-pipeline
+#pool:
+#
+#  vmImage: ubuntu-latest
+#steps:
+#
+#- script: |
+#     python -m venv xpto
+#     source xpto/bin/activate
+#     python -m pip install --upgrade pip
+#     pip install ansible
+#     ansible-playbook playbook-explore.yml
+#     echo $PS1
+#
+#  displayName: "Install requirements"
