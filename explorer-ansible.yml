@@ -29,7 +29,7 @@ steps:
 #- script: ansible-playbook playbook-explore.yml
 #  displayName: 'Playbook Ansible'
 #
-#- script: echo $PS1
+- script: echo $PS1
 
 #trigger:
 #- main
