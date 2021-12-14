@@ -11,10 +11,8 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo $PS1
-
 - script: | 
-          echo $PS1
+          pipenv run echo $PS1
           pip install pipenv --user
           pipenv shell
           pipenv install ansible 
