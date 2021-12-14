@@ -16,6 +16,8 @@ steps:
 - script: pip install pipenv --user
   displayName: 'Subindo ambiente Python Virtual'
 
+- script: pipenv shell
+  displayName: 'Tentando entrar no Venv'
 
 - script: pipenv install ansible 
   displayName: 'Instalando Ansible'
