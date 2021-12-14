@@ -11,13 +11,15 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo $PS1
+#- script: echo $PS1
 
 - script: | 
+          echo $PS1
           pip install pipenv --user
           pipenv shell
           pipenv install ansible 
           ansible-playbook playbook-explore.yml
+          echo $PS1
   displayName: 'Subindo ambiente Python Virtual'
 
 #- script: pipenv shell
