@@ -13,19 +13,23 @@ pool:
 steps:
 - script: echo $PS1
 
-- script: pip install pipenv --user
+- script: | 
+          pip install pipenv --user
+          pipenv shell
+          pipenv install ansible 
+          ansible-playbook playbook-explore.yml
   displayName: 'Subindo ambiente Python Virtual'
 
-- script: pipenv shell
-  displayName: 'Tentando entrar no Venv'
-
-- script: pipenv install ansible 
-  displayName: 'Instalando Ansible'
-
-- script: ansible-playbook playbook-explore.yml
-  displayName: 'Playbook Ansible'
-
-- script: echo $PS1
+#- script: pipenv shell
+#  displayName: 'Tentando entrar no Venv'
+#
+#- script: pipenv install ansible 
+#  displayName: 'Instalando Ansible'
+#
+#- script: ansible-playbook playbook-explore.yml
+#  displayName: 'Playbook Ansible'
+#
+#- script: echo $PS1
 
 #trigger:
 #- main
