@@ -11,13 +11,35 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: pip install pipenv --user
+- script: | 
+          pipenv run echo $PS1
+          pip install pipenv --user
+          pipenv run echo $PS1
+          pipenv run install ansible 
+          pipenv run ansible-playbook playbook-explore.yml
+          
   displayName: 'Subindo ambiente Python Virtual'
 
+#- script: pipenv install ansible 
+#  displayName: 'Instalando Ansible'
+#
+#- script: ansible-playbook playbook-explore.yml
+#  displayName: 'Playbook Ansible'
 
-- script: pipenv install ansible 
-  displayName: 'Instalando Ansible'
 
-- script: pipenv shell && ansible-playbook playbook-explore.yml
-  displayName: 'Playbook Ansible'
-
+#trigger:
+#- the-first-pipeline
+#pool:
+#
+#  vmImage: ubuntu-latest
+#steps:
+#
+#- script: |
+#     python -m venv xpto
+#     source xpto/bin/activate
+#     python -m pip install --upgrade pip
+#     pip install ansible
+#     ansible-playbook playbook-explore.yml
+#     echo $PS1
+#
+#  displayName: "Install requirements"
