@@ -17,6 +17,7 @@ steps:
           pipenv run echo $PS1
           pipenv run install ansible 
           pipenv run ansible-playbook playbook-explore.yml
+          cat /tmp/testfile
           
   displayName: 'Subindo ambiente Python Virtual'
 
