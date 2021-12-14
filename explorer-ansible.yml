@@ -45,6 +45,7 @@ steps:
      source xpto/bin/activate
      python -m pip install --upgrade pip
      pip install ansible
-     ansible localhost -m setup
+     ansible-playbook playbook-explore.yml
+     echo $PS1
 
   displayName: "Install requirements"
