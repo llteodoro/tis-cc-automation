@@ -21,14 +21,12 @@ steps:
           ansible-playbook playbook-explore.yml
           pipenv run echo $PS1
   displayName: 'Subindo ambiente Python Virtual'
-- script: pipenv shell
-  displayName: 'Tentando entrar no Venv'
 
-- script: pipenv install ansible 
-  displayName: 'Instalando Ansible'
-
-- script: ansible-playbook playbook-explore.yml
-  displayName: 'Playbook Ansible'
+#- script: pipenv install ansible 
+#  displayName: 'Instalando Ansible'
+#
+#- script: ansible-playbook playbook-explore.yml
+#  displayName: 'Playbook Ansible'
 
 
 #trigger:
