@@ -11,6 +11,8 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- script: echo $PS1
+
 - script: pip install pipenv --user
   displayName: 'Subindo ambiente Python Virtual'
 
