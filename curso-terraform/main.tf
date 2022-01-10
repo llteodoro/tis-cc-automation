@@ -12,7 +12,30 @@ resource "aws_instance" "dev" {
     tags = {
         Name = "dev${count.index}"
     }
-    vpc_security_group_ids = ["sg-0bf9938db9769dbf5"]
+    vpc_security_group_ids = ["${aws_security_group.acesso-ssh.id}"]
+}
+
+resource "aws_instance" "dev4" {
+    count = 1
+    ami = "ami-056b1936002ca8ede"
+    instance_type = "t2.micro"
+    key_name = "terraform-aws-pub"
+    vpc_security_group_ids = ["${aws_security_group.acesso-ssh.id}"]
+    depends_on = [aws_s3_bucket.dev4]
+    tags = {
+        Name = "dev4"
+    }
+}
+
+resource "aws_instance" "dev5" {
+    #count = 3
+    ami = "ami-056b1936002ca8ede"
+    instance_type = "t2.micro"
+    key_name = "terraform-aws-pub"
+    vpc_security_group_ids = ["${aws_security_group.acesso-ssh.id}"]
+    tags = {
+      Name = "dev5"
+    }
 }
 
 
@@ -31,3 +54,12 @@ resource "aws_security_group" "acesso-ssh" {
     Name = "acesso-ssh"
   }
 }
+
+resource "aws_s3_bucket" "dev4" {
+    bucket = "terraform-aws-s3-dev4"
+    acl = "private"
+
+    tags = {
+        Name = "terraform-aws-s3-dev4"
+    }
+} 
