@@ -22,7 +22,7 @@ resource "aws_instance" "dev" {
     vpc_security_group_ids = ["${aws_security_group.acesso-ssh.id}"]
 }
 
-resource "aws_instance" "dev4" {
+/*resource "aws_instance" "dev4" {
     count = 1
     ami = var.amis["us-east-2"]
     instance_type = var.instance["us-east-2"]
@@ -32,7 +32,7 @@ resource "aws_instance" "dev4" {
     tags = {
         Name = "dev4"
     }
-}
+}*/
 
 resource "aws_instance" "dev5" {
     #count = 3
@@ -86,7 +86,7 @@ resource "aws_dynamodb_table" "dynamodb-hml" {
   }
 
 }
-
+/*Exclusão de um recurso
 resource "aws_s3_bucket" "dev4" {
     bucket = "terraform-aws-s3-dev4"
     acl = "private"
@@ -95,3 +95,4 @@ resource "aws_s3_bucket" "dev4" {
         Name = "terraform-aws-s3-dev4"
     }
 } 
+*/
