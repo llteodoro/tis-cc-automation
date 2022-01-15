@@ -96,3 +96,11 @@ resource "aws_s3_bucket" "dev4" {
     }
 } 
 */
+resource "aws_s3_bucket" "hml" {
+    bucket = "terraform-aws-s3-hml"
+    acl = "private"
+
+    tags = {
+        Name = "terraform-aws-s3-hml"
+    }
+} 
