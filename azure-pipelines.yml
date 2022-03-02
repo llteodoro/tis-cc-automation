@@ -1,0 +1,27 @@
+---
+trigger:
+- the-first-pipeline
+
+pool:
+  vmImage: ubuntu-16.04
+
+steps:
+
+- checkout: https://github.com/llteodoro/tis-cc-automation/tree/the-first-pipeline/ansible-molecule/webserver
+  path: webserver
+
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.8'
+
+- script: python -m pip install "molecule[lint]" "python-vagrant" "molecule-vagrant" "ansible"
+  displayName: Install dependencies
+
+- script: python -m pip install "python-tss-sdk"
+  displayName: Role-specific dependencies
+
+- script: |
+    export PATH="$PATH:/home/<user>/.local/bin/"
+    cd $(Agent.BuildDirectory)/webserver
+    molecule test
+  displayName: Test relevant platforms
