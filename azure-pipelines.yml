@@ -7,8 +7,7 @@ pool:
 
 steps:
 
-- checkout: git://llteodoro/tis-cc-automation/tree/the-first-pipeline/ansible-molecule/webserver
-  path: webserver
+- checkout: none
 
 - task: UsePythonVersion@0
   inputs:
