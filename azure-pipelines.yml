@@ -19,7 +19,7 @@ steps:
     SourceFolder: '$(Build.SourcesDirectory)'
     OverWrite: true 
     Contents: |
-      **/ansible-molecule/webserver
+      **/tis-cc-automation/ansible-molecule/webserver/**
     TargetFolder: '/tmp/molecule/'
 
 #- script: |
