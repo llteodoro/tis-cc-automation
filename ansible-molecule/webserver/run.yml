@@ -21,7 +21,7 @@ steps:
     Contents: |
       **\tasks\**
       **\molecule\**
-    TargetFolder: '/tmp/molecule/'
+    TargetFolder: '\tmp\molecule/'
 
 #- script: |
 #    pipenv shell
