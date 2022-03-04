@@ -15,8 +15,8 @@ steps:
     SourceFolder: '$(Build.SourcesDirectory)'
     OverWrite: true 
     Contents: |
-      '**/tasks/**'
-      '**/molecule/**'
+      '$(Build.SourcesDirectory)/ansible-molecule/webserver/tasks/**'
+      '$(Build.SourcesDirectory)/ansible-molecule/webserver/molecule/**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)/tmp'
 
 #- task: UsePythonVersion@0
