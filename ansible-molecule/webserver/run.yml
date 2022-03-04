@@ -1,1 +1,36 @@
+---
+trigger:
+- the-first-pipeline
 
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+
+- checkout: none
+
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.8'
+
+- task: CopyFiles@2
+  displayName: 'Copy file'
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)'
+    OverWrite: true 
+    Contents: |
+      **/ansible-molecule/webserver/tasks/**
+      **/ansible-molecule/webserver/molecule/**
+    TargetFolder: '/tmp/molecule/'
+
+#- script: |
+#    pipenv shell
+#    python -m pip install "molecule[lint]" "python-vagrant" "molecule-vagrant" "ansible" 
+#
+#  displayName: Install dependencies
+#
+#- script: |
+#    export PATH="$PATH:/home/<user>/.local/bin/"
+#    cd $(Agent.BuildDirectory)/webserver
+#    molecule test
+#  displayName: Test relevant platforms
