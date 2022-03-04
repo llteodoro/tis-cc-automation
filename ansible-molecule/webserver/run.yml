@@ -9,10 +9,6 @@ steps:
 
 - checkout: none
 
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '3.8'
-
 - task: CopyFiles@2
   displayName: 'Copy file'
   inputs:
@@ -22,6 +18,12 @@ steps:
       '**/tasks/**'
       '**/molecule/**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)/tmp'
+
+#- task: UsePythonVersion@0
+#  inputs:
+#    versionSpec: '3.8'
+
+
 
 #- script: |
 #    pipenv shell
