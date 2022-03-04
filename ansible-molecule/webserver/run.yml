@@ -19,9 +19,9 @@ steps:
     SourceFolder: '$(Build.SourcesDirectory)'
     OverWrite: true 
     Contents: |
-      **/tasks/**
-      **/molecule/**
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+      '**/tasks/**'
+      '**/molecule/**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)/tmp'
 
 #- script: |
 #    pipenv shell
