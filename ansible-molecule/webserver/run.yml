@@ -25,11 +25,12 @@ steps:
 
 - script: |
     pipenv shell
-    python -m pip install "molecule[lint]" "python-vagrant" "molecule-vagrant" "ansible" 
+    python -m pip install "molecule[lint,docker]" "wheel" "ansible" 
 
   displayName: Install dependencies
 
 - script: |
+    pipenv shell
     cd /tmp/webserver
     molecule test
   displayName: Pipeline Tests
