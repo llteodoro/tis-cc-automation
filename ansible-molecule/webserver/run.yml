@@ -31,7 +31,6 @@ steps:
   displayName: Install dependencies
 
 - script: |
-    export PATH="$PATH:/home/<user>/.local/bin/"
-    cd $(Agent.BuildDirectory)/webserver
+    cd /tmp/webserver
     molecule test
   displayName: Pipeline Tests
