@@ -8,14 +8,14 @@ pool:
 steps:
 
 
-#- task: CopyFiles@2
-#  displayName: 'Copy file'
-#  inputs:
-#    SourceFolder: '$(Build.SourcesDirectory)'
-#    OverWrite: true 
-#    Contents: |
-#      **/*
-#    TargetFolder: '/tmp'
+- task: CopyFiles@2
+  displayName: 'Copy file'
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)'
+    OverWrite: true 
+    Contents: |
+      **/*
+    TargetFolder: '/tmp'
 
 - task: UsePythonVersion@0
   inputs:
@@ -32,8 +32,8 @@ steps:
 
   displayName: Install dependencies
 
-#- script: |
-#    pipenv shell
-#    cd /tmp/webserver
-#    molecule test
-#  displayName: Pipeline Tests
+- script: |
+    cd /tmp/webserver
+    source .venv/bin/activate
+    molecule test
+  displayName: Pipeline Tests
