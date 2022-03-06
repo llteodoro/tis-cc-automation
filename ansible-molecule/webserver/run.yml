@@ -26,18 +26,18 @@ steps:
     displayName: Teste 
 
 
-- script: |
-    cd /tmp/ansible-molecue/webserver/
-    python3 -m venv .venv && source .venv/bin/activate
-    python3 -m pip install "molecule[docker,lint]"
-    python3 -m pip install "whell"
-    python3 -m pip install "ansible"
-
-  displayName: Install dependencies
-
-- script: |
-    ls -l /tmp
-    cd /tmp/ansible-molecue/webserver/
-    source .venv/bin/activate
-    molecule test
-  displayName: Pipeline Tests
+#- script: |
+#    cd /tmp/ansible-molecue/webserver/
+#    python3 -m venv .venv && source .venv/bin/activate
+#    python3 -m pip install "molecule[docker,lint]"
+#    python3 -m pip install "whell"
+#    python3 -m pip install "ansible"
+#
+#  displayName: Install dependencies
+#
+#- script: |
+#    ls -l /tmp
+#    cd /tmp/ansible-molecue/webserver/
+#    source .venv/bin/activate
+#    molecule test
+#  displayName: Pipeline Tests
