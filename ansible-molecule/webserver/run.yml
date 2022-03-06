@@ -7,7 +7,6 @@ pool:
 
 steps:
 
-- checkout: none
 
 - task: CopyFiles@2
   displayName: 'Copy file'
@@ -18,19 +17,19 @@ steps:
       **/*
     TargetFolder: '/tmp'
 
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '3.8'
-
-
-
-- script: |
-    pipenv shell
-    python -m pip install "molecule[lint]" "python-vagrant" "molecule-vagrant" "ansible" 
-
-  displayName: Install dependencies
-
-- script: |
-    cd /tmp/webserver
-    molecule test
-  displayName: Pipeline Tests
+#- task: UsePythonVersion@0
+#  inputs:
+#    versionSpec: '3.8'
+#
+#
+#
+#- script: |
+#    pipenv shell
+#    python -m pip install "molecule[lint]" "python-vagrant" "molecule-vagrant" "ansible" 
+#
+#  displayName: Install dependencies
+#
+#- script: |
+#    cd /tmp/webserver
+#    molecule test
+#  displayName: Pipeline Tests
