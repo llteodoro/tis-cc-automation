@@ -17,7 +17,7 @@ steps:
     SourceFolder: '$(Build.SourcesDirectory)'
     OverWrite: true 
     Contents: |
-      **/*
+      **/ansible-molecule/webserver/**
     TargetFolder: '/tmp'
 
 
