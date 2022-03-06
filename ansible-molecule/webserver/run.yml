@@ -28,6 +28,8 @@ steps:
      python3 -m pip install "wheel"
      python3 -m pip install "ansible"
      python3 -m pip install "pytest"
+     python3 -m pip install "testinfra" 
+     python3 -m pip install "python-tss-sdk"
      molecule -vvvv test 
   displayName: Teste 
 
