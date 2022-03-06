@@ -20,6 +20,11 @@ steps:
       **/ansible-molecule/webserver/**
     TargetFolder: '/tmp'
 
+- script: |
+   ls -l /tmp
+
+    displayName: Teste 
+
 
 - script: |
     cd /tmp/ansible-molecue/webserver/
@@ -31,7 +36,7 @@ steps:
   displayName: Install dependencies
 
 - script: |
-    ls -l /tmp/ansible-molecue/webserver/
+    ls -l /tmp
     cd /tmp/ansible-molecue/webserver/
     source .venv/bin/activate
     molecule test
