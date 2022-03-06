@@ -24,9 +24,11 @@ steps:
 
 
 - script: |
-    pipenv install
-    pipenv shell
-    pip install "molecule[lint,docker]" "wheel" "ansible" 
+
+    python3 -m venv .venv && source .venv/bin/activate
+    python3 -m pip install "molecule[docker,lint]"
+    python3 -m pip install "whell"
+    python3 -m pip install "ansible"
 
   displayName: Install dependencies
 
