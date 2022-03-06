@@ -22,7 +22,7 @@ steps:
 
 - script: |
      ls -l /tmp/ansible-molecule/webserver/molecule/default
-     cd /tmp/ansible-molecule/webserver/molecule/default
+     cd /tmp/ansible-molecule/webserver
      python3 -m venv .venv && source .venv/bin/activate
      python3 -m pip install "molecule[docker,lint]"
      python3 -m pip install "wheel"
