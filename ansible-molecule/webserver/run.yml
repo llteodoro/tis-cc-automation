@@ -21,7 +21,7 @@ steps:
     TargetFolder: '/tmp'
 
 - script: |
-   ls -l /tmp
+   ls -l /tmp/ansible-molecule/webserver/
 
     displayName: Teste 
 
