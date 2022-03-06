@@ -27,7 +27,7 @@ steps:
      python3 -m pip install "molecule[docker,lint]"
      python3 -m pip install "wheel"
      python3 -m pip install "ansible"
-     molecule test 
+     molecule test -vvvv
   displayName: Teste 
 
 
