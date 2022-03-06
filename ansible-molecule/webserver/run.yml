@@ -8,14 +8,14 @@ pool:
 steps:
 
 
-- task: CopyFiles@2
-  displayName: 'Copy file'
-  inputs:
-    SourceFolder: '$(Build.SourcesDirectory)'
-    OverWrite: true 
-    Contents: |
-      **/*
-    TargetFolder: '/tmp'
+#- task: CopyFiles@2
+#  displayName: 'Copy file'
+#  inputs:
+#    SourceFolder: '$(Build.SourcesDirectory)'
+#    OverWrite: true 
+#    Contents: |
+#      **/*
+#    TargetFolder: '/tmp'
 
 - task: UsePythonVersion@0
   inputs:
@@ -24,13 +24,14 @@ steps:
 
 
 - script: |
+    pipenv install
     pipenv shell
-    python -m pip install "molecule[lint,docker]" "wheel" "ansible" 
+    pip install "molecule[lint,docker]" "wheel" "ansible" 
 
   displayName: Install dependencies
 
-- script: |
-    pipenv shell
-    cd /tmp/webserver
-    molecule test
-  displayName: Pipeline Tests
+#- script: |
+#    pipenv shell
+#    cd /tmp/webserver
+#    molecule test
+#  displayName: Pipeline Tests
