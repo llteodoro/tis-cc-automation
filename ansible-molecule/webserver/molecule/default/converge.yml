@@ -2,6 +2,6 @@
 - name: Converge
   hosts: all
   tasks:
-    - name: "Include webserver2"
+    - name: "Include webserver"
       include_role:
-        name: "webserver2"
+        name: "webserver"
