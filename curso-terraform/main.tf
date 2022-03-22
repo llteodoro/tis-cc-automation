@@ -1,6 +1,7 @@
 provider "aws" {
     version = "~> 2.0"
     region = "us-east-2"
+    #shared_credentials_file = "/home/lucaluisto/.aws/credentials"
   
 }
 
@@ -8,9 +9,10 @@ provider "aws" {
     alias = "us-east-1"
     version = "~> 2.0"
     region = "us-east-1"
+    #shared_credentials_file = "/home/lucaluisto/.aws/credentials"
   
 }
-
+/*
 resource "aws_instance" "dev" {
     count = 3
     ami = var.amis["us-east-2"]
@@ -33,9 +35,8 @@ resource "aws_instance" "dev" {
         Name = "dev4"
     }
 }*/
-
+/*
 resource "aws_instance" "dev5" {
-    #count = 3
     ami = var.amis["us-east-2"]
     instance_type = var.instance["us-east-2"]
     key_name = var.key_name["us-east-2"]
@@ -44,7 +45,7 @@ resource "aws_instance" "dev5" {
       Name = "dev5"
     }
 }
-
+/*
 resource "aws_instance" "dev6" {
     provider = aws.us-east-1
     ami = var.amis["us-east-1"]
@@ -54,9 +55,8 @@ resource "aws_instance" "dev6" {
     tags = {
       Name = "dev6"    
     }
-    depends_on = [aws_dynamodb_table.dynamodb-hml]
 }
-
+/*
 resource "aws_instance" "dev7" {
     provider = aws.us-east-1
     ami = var.amis["us-east-1"]
@@ -68,7 +68,7 @@ resource "aws_instance" "dev7" {
     }
 }
 
-resource "aws_dynamodb_table" "dynamodb-hml" {
+/*resource "aws_dynamodb_table" "dynamodb-hml" {
   provider = aws.us-east-1
   name           = "GameScores"
   billing_mode   = "PAY_PER_REQUEST"
@@ -96,11 +96,11 @@ resource "aws_s3_bucket" "dev4" {
     }
 } 
 */
-resource "aws_s3_bucket" "hml" {
+/*resource "aws_s3_bucket" "hml" {
     bucket = "terraform-aws-s3-hml"
     acl = "private"
 
     tags = {
         Name = "terraform-aws-s3-hml"
     }
-} 
+}*/ 

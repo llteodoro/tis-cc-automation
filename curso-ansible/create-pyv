@@ -1,0 +1,6 @@
+## Criar ambiente virtual
+python3 -m venv .venv && source .venv/bin/activate
+## Instalar os requirements no ambiente virtual
+python3 -m pip install "molecule[docker,lint]"
+python3 -m pip install "whell"
+python3 -m pip install "ansible"
