@@ -8,11 +8,10 @@ curso-docker/alura-docker-cap06
 .vagrantfile
 .terraform
 .terraform.tfstate
-.terraform.tfstate.backup
-.terraform.tfvars
-.terraform.lock.hcl
-.terraform/providers
-.1_x4
+curso-terraform/terraform.tfstate.backup
+curso-terraform/terraform.tfvars
+curso-terraform/terraform.lock.hcl
+curso-terraform/terraform/providers
 curso-terraform/.terraform/
 curso-terraform/.terraform/providers/registry.terraform.io/hashicorp/aws/2.70.1/linux_amd64/
 #ignore all logs
